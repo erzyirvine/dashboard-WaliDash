@@ -1,0 +1,467 @@
+html,body{
+	margin: 0;
+	background-color: #FCFCFC;
+}
+
+.image {
+	border-radius: 6px;
+	margin: 12px 12px 0px 12px;
+	background-image:url(/images/login.png);
+	height: 755px;
+	width: 622px;
+}
+
+.title {
+	width: 100px;
+	height: auto;
+	margin-top: 93px;
+}
+
+.title H3{
+	font-size: 64px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.subtitle {
+	height: auto;
+	margin-bottom: 80px;
+}
+
+.subtitle p {
+	text-align: center;
+}
+
+.form input{
+	height: 51px;
+}
+
+.input-container {
+	width: 483px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.form label{
+	margin-bottom: 6px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.checkbox label{
+	font-size: 12px;
+	font-weight: 300;
+	margin: auto;
+}
+
+.input-container a {
+	width: 483px;
+	height: 72px;
+	margin: 0 auto;
+	font-size: 32px;
+	font-weight: bold;margin-top: 58px;
+
+
+}
+
+/* sidebar */
+
+.sidebar {
+	height: 100vh;
+	width: 250px;
+	background-color: #16263D !important;
+	position: fixed;
+}
+
+.ghost-col {
+	width: 250px;
+}
+
+.content {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.telu {
+	width: 64px;
+	height: 64px;
+	background-image:url(/images/telu.png);
+	margin: 0 auto;
+	margin-top: 23px;
+	margin-bottom: 56px;
+}
+
+.sidebar ul li a {
+	text-decoration: none;
+
+}
+
+.sidebar i, .sidebar span {
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+.sidebar span {
+	font-size: 16px;
+	font-weight: 600px;
+	color: #C7DCFB;
+}
+
+.active {
+	background-color: #D2E5FF;
+	border-radius: 6px;
+}
+
+.active a {
+	color: #000000;
+}
+
+.active span {
+	color: black;
+}
+
+.sidebar ul {
+	padding: 0;
+}
+
+.active-icon {
+	color: : ;
+}
+
+.sidebar li {
+	width: auto;
+	height: 40px;
+	margin-bottom: 6px;
+}
+
+.link-container {
+	height: auto;
+}
+
+.profile {
+	border-radius: 50%;
+	background-color: black;
+	width: 36px;
+	height: 36px;
+}
+
+.profile-name h6 {
+	color: #D2E5FF ;
+	margin-left: 12px;
+}
+
+.account {
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	background-color: #395F95;
+	height: auto !important;
+	border-radius: 6px;
+	margin-top: 250px;
+}
+
+.logout a i {
+	color: #F6FAFF !important;
+}
+
+/* content main dashboard */
+
+.breadcrumbs {
+	margin-top: 39px;
+}
+
+.breadcrumbs h3 {
+	font-size: 26px;
+}
+
+.filter-kelas {
+	width: 177px;
+	height: 36px;
+	margin-top: 32px;
+	margin-bottom: 12px;
+}
+
+.icon-mahasiswa {
+	width: 50px;
+	height: 50px;
+	background-image:url(/images/widget_mahasiswa.png);
+}
+
+.icon-mengulang {
+	width: 50px;
+	height: 50px;
+	background-image:url(/images/icon.png);
+}
+
+.icon-watchlist {
+	width: 50px;
+	height: 50px;
+	background-image:url(/images/widget_watchlist.png);
+}
+
+.widget-tracker {
+	height: 122px;
+	background-color: #FDFDFD;
+	border: 1px #EAEAEA;
+	border-radius: 6px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+	/*width: 316px;*/
+}
+
+.widget-tracker:nth-child(2), .widget-tracker:nth-child(3) {
+	margin-left: 12px;
+}
+
+.top-widget {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px black;
+}
+
+.top-widget .counter-text {
+    flex: 1; /* Allows the col-md-9 to take up the remaining space */
+}
+
+.counter-text {
+	margin-top: 12px;
+	margin-left: 12px;
+}
+
+.right-arrow {
+	background-image:url(/images/right-arrow.png);
+	width: 24px;
+	height: 24px;
+}
+
+.bot-widget {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 6px;
+}
+
+.bot-widget a {
+	text-decoration: none;
+	color: black;
+}
+
+.widget-mhs-tracker a {
+	text-decoration: none;
+	font-weight: 600;
+	color: black;
+	margin-right: 6px;
+}
+
+/*widget kehadiran*/
+
+.widget-kehadiran {
+	background-color: #FDFDFD;
+	padding: 24px;
+	border-radius: 6px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+	border: 1px #EAEAEA;
+	/*width: 316px;*/
+	margin-top: 12px;
+	margin-right: 12px;
+
+}
+
+.widget-kehadiran h3 {
+	font-size: 24px;
+	margin-bottom: 24px;
+}
+
+.filter-matkul {
+	margin-bottom: 24px;
+}
+
+/*widget mahasiswa checkup*/
+
+.widget-checkup {
+	background-color: #FDFDFD;
+	padding: 24px;
+	border-radius: 6px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+	border: 1px #EAEAEA;
+	margin-top: 12px;
+}
+
+.widget-checkup span {
+	font-size: 12px;
+	color: #797979;
+	margin-bottom: 24px;
+}
+
+.widget-checkup h3 {
+	font-size: 24px;
+	margin-bottom: 4px;
+}
+
+.widget-checkup {
+	width: auto;
+}
+
+.table-checkup {
+	margin-top: 24px;
+}
+
+.footer {
+	height: 50px;
+}
+
+/*mahasiswa wali */
+
+.top-part {
+    display: flex;
+    height: 60px;
+}
+
+.header-title {
+    flex: 0 0 auto;
+    align-self: center;
+}
+
+.mhs_filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    gap: 10px; /* Space between search and select */
+}
+
+.search-bar {
+    width: 187px;
+    margin-top: 24px;
+}
+
+.kls_filter {
+    width: auto; /* Adjust width as needed */
+}
+
+.search-bar input {
+	height: 37px !important;
+}
+
+/*mahasiswa mengulang*/
+
+.status {
+	color: white !important;
+}
+
+/*profile mahasiswa*/
+
+.rangkuman h6 {
+	margin-bottom: 16px;
+
+}
+
+.rangkuman {
+	border: 1px solid #953030;
+	background-color: #FFDFDF;
+	margin-top: 32px;
+	padding: 24px;
+	border-radius: 6px;
+}
+
+.problem {
+	display: flex;
+}
+
+.problem a {
+	text-decoration: none;
+	color: #953030;
+	font-weight: 600;
+	margin-left: 12px;
+}
+
+.problem span {
+	font-weight: 600;
+	margin-left: 4px;
+	font-size: 16px;
+}
+
+.problem p {
+	margin-bottom: 6px;
+}
+
+.mhs-pfp {
+	width: 106px;
+	height: 106px;
+	padding: 4px;
+	border-radius: 50%;
+	border: 1px solid grey;
+	margin-right: 24px;
+}
+
+.info-mhs {
+	padding: 24px;
+	background-color: #FDFDFD;
+	border: 1px #EAEAEA;
+	border-radius: 6px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+	margin-top: 12px;
+	display: flex;
+}
+
+.info-container p {
+	margin-bottom: 6px;
+}
+
+.status-mhs {
+	text-align: center;
+	align-self: center;
+}
+
+.widget-ipk {
+	padding: 24px;
+	background-color: #FDFDFD;
+	border: 1px #EAEAEA;
+	border-radius: 6px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.16);
+	margin-top: 12px;
+}
+
+.widget-ipk h3 {
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 24px;
+}
+
+.nilai-extra {
+	text-align: center;
+	align-self: center;
+	margin-right: 24px;
+}
+
+.daftar-mhs {
+	display: flex;
+	justify-content: center;
+}
+
+.nilai-extra span {
+	font-size: 16px;
+}
+
+.table-text td {
+	font-size: 12px;
+}
+
+.matkul-uncheck {
+	padding: 0;
+}
+
+.top-part i {
+	margin-left: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
