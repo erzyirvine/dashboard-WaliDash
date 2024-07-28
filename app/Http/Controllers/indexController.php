@@ -26,4 +26,18 @@ class indexController extends Controller
         return view('profile_mhs');
     }
 
+    public function login(Request $req){
+
+
+
+        $username = $req->input('username');
+        $password = $req->input('password');
+
+        if($username == 'admin123' && $password == 'admin123'){
+            return redirect()->route('main_dashboard');
+        }else{
+            return back()->with('error','Username & Password Salah');
+        }
+    
+    }
 }

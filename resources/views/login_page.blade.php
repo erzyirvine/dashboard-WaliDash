@@ -22,15 +22,23 @@
                         <p>Please enter your username and password to proceed</p>
                     </div>
                     <div class="w-100"></div>
+                    <form action="{{ route('login')}}" method="POST">
+                        @csrf
                     <div class="col-md">
                         <div class="input-container">
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                             {{ session('error') }}
+                                </div>
+                            @endif
+
                             <div class="mb-3 form">
                                 <label for="exampleFormControlInput1" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" name="username">
                             </div>
                             <div class="mb-3 form">
                                 <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleFormControlInput1">
+                                <input type="password" class="form-control" id="exampleFormControlInput1" name="password">
                             </div>
 
                             <div class="custom-control custom-checkbox checkbox">
@@ -38,9 +46,9 @@
                             <label class="custom-control-label" for="customCheck1">Remember me</label>
                             </div>
 
-                            <a class="btn btn-primary" href="{{ route('main_dashboard') }}" role="button">LOGIN</a>
+                            <button class="btn btn-primary" href="{{ route('main_dashboard') }}" role="button">LOGIN</button>
                         </div>
-
+                    </form>
 
                         
                     </div>
