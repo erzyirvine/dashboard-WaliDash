@@ -16,11 +16,11 @@ $data_mk_repeat = array(
 );
 
 $data_mkpil_repeat = array(
-    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "RPL: IMPLEMENTASI DAN PENGUJIAN PLRPL: IMPLEMENTASI DAN PENGUJIAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "E", "Status" => "Sudah Diambil"),
-    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENDIDIKAN KARAKTER", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "E", "Status" => "Sudah Diambil"),
-    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENGENALAN PEMROGRAMAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "E", "Status" => "Sudah Diambil"),    
-    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENGENALAN PEMROGRAMAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "E", "Status" => "Sudah Diambil"),
-    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENGENALAN PEMROGRAMAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "E", "Status" => "Sudah Diambil"),
+    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "RPL: IMPLEMENTASI DAN PENGUJIAN PLRPL: IMPLEMENTASI DAN PENGUJIAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "-", "Status" => "Sudah Diambil"),
+    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENDIDIKAN KARAKTER", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "-", "Status" => "Sudah Diambil"),
+    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENGENALAN PEMROGRAMAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "-", "Status" => "Sudah Diambil"),    
+    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENGENALAN PEMROGRAMAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "-", "Status" => "Sudah Diambil"),
+    array("kode_matkul" => "UKB1B2", "Nama_matkul" => "PENGENALAN PEMROGRAMAN", "SKS" => 2, "Jenis" => "PILIHAN", "Tahun_Kurikulum" => "2020", "Tingkat" => "TINGKAT 1", "Tahun_Ajaran" => "2022/2023", "Semester" => "1", "Nilai_Indeks" => "-", "Status" => "Sudah Diambil"),
 );
 ?>
 
@@ -28,6 +28,7 @@ $data_mkpil_repeat = array(
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Main Dashboard</title>
 </head>
@@ -44,14 +45,14 @@ $data_mkpil_repeat = array(
 			<div class="col-md-3 sidebar">
 				<div class="telu"></div>
 				<ul>
-					<li class="active">
-						<a href="#">
-							<i class="fa-solid fa-chart-simple" class="active-icon"></i><span>Dashboard</span>
+					<li>
+						<a href="{{ route('main_dashboard') }}">
+							<i class="fa-solid fa-chart-simple"></i><span>Dashboard</span>
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a href="{{ route('mahasiswa_wali') }}">
-							<i class="fa-solid fa-user-group"></i><span>Mahasiswa Wali</span>
+							<i class="fa-solid fa-user-group active-icon"></i><span>Mahasiswa Wali</span>
 						</a>
 					</li>
 					<li>
@@ -71,7 +72,7 @@ $data_mkpil_repeat = array(
 							<span>ERJ</span>
 						</div>
 						<div class="col-md-2 logout">
-							<a href="#">
+							<a href="{{ route('login_page') }}">
 								<i class="fa-solid fa-arrow-right-from-bracket"></i>
 							</a>
 						</div>
@@ -87,29 +88,35 @@ $data_mkpil_repeat = array(
 						<h6>Mahasiswa Ini Belum Melengkapi</h6>
 						<div class="problem">
 							<p>- Ada mata kuliah wajib yang belum diambil</p>
-							<a href="#">Lihat</a>
+							<a href="#mk-wajib">Lihat</a>
 						</div>
 						<div class="problem">
 							<p>- Ada mata kuliah wajib yang perlu diulang</p>
-							<a href="#">Lihat</a>
+							<a href="#mk-ulang">Lihat</a>
 						</div>
 						<div class="problem">
 							<p>- Ada mata kuliah pilihan yang belum diambil</p>
-							<a href="#">Lihat</a>
+							<span>2/3</span>
+							<a href="#mk-pilihan">Lihat</a>
 						</div>
 						<div class="problem">
-							<p>- Nilai TOEFL belum mencukupi</p>
-							<a href="#">Lihat</a>
+							<p>- Nilai Eprt belum mencukupi</p>
+							<a href="#eprt">Lihat</a>
 						</div>
 						<div class="problem">
 							<p>- SKS </p>
 							<span>135 / 140</span>
 						</div>
+						<div class="problem">
+							<p>- TAK </p>
+							<span>35 / 60</span>
+						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12 breadcrumbs">
+					<div class="col-md-12 breadcrumbs profile-pin">
 						<h3>profile mahasiswa</h3>
+						<a href="#" id="watchlist-btn" class="btn btn-warning">masukan ke watchlist</a>
 					</div>
 					<div class="col info-mhs">
 						<div class="col-md-3 mhs-pfp"></div>
@@ -146,7 +153,7 @@ $data_mkpil_repeat = array(
 						<canvas id="kehadiran"></canvas>
 					</div>
 					<div class="col widget-ipk">
-						<h3>IPK Mahasiswa</h3>
+						<h3>IPS Mahasiswa</h3>
 						<canvas id="nilai"></canvas>
 					</div>
 				</div>
@@ -167,7 +174,7 @@ $data_mkpil_repeat = array(
 							<p><b>Belum lulus </b> IP : 3.88</p>
 							<p><b>Belum lulus </b> IP : 3.88</p>
 						</div>
-						<div class="col-md-3 daftar-mhs">
+						<div class="col-md-3 daftar-mhs"  id="eprt">
 							<div class="nilai-extra">
 								<h5>Eprt</h5>
 								<span class="badge bg-success">600</span>
@@ -182,10 +189,10 @@ $data_mkpil_repeat = array(
 					
 				</div>
 				<div class="row">
-					<div class="col-md-12 matkul-uncheck">
+					<div class="col-md-12 matkul-uncheck" id="mk-wajib">
 						<div class="col widget-checkup">
 							<div class="col-md-12 top-part">
-								<h3>Mata Kuliah Belum Diambil<i title="Menampilkan Mata kuliah yang belum diambil
+								<h3>Mata Kuliah Wajib Belum Diambil<i title="Menampilkan Mata kuliah yang belum diambil
 									di tingkat setara dan sebelumnya" class="fa-solid fa-circle-info"></i></h3>
 								</div>
 								<table class="table">
@@ -232,7 +239,7 @@ $data_mkpil_repeat = array(
 				</div>
 				
 				<div class="row">
-					<div class="col-md-12 matkul-uncheck">
+					<div class="col-md-12 matkul-uncheck" id="mk-ulang">
 						<div class="col widget-checkup">
 							<div class="col-md-12 top-part">
 								<h3>Mata kuliah Wajib Mengulang</h3>
@@ -282,7 +289,7 @@ $data_mkpil_repeat = array(
 
 				
 				<div class="row">
-					<div class="col-md-12 matkul-uncheck">
+					<div class="col-md-12 matkul-uncheck" id="mk-pilihan">
 						<div class="col widget-checkup">
 							<div class="col-md-12 top-part">
 								<h3>Mata kuliah pilihan belum diambil</h3>
@@ -337,27 +344,10 @@ $data_mkpil_repeat = array(
 		</div>
 	</div>
 
+	<div id="notification" class="notification"></div>
+
 </body>
 <script type="text/javascript">
-	const pie = document.getElementById('kehadiran');
-
-  	new Chart(pie, {
-    type: 'pie',
-    data: {
-      labels: ['Hadir', 'Sakit', 'Izin', 'Tidak Hadir'],
-      datasets: [{
-        label: 'kehadiran',
-        data: [12, 19, 3, 5],
-        backgroundColor: [
-        'rgb(134,228,186)',
-	      'rgb(255, 99, 132)',
-	      'rgb(54, 162, 235)',
-	      'rgb(255, 205, 86)'
-    	],
-    	hoverOffset: 4
-      }]
-    },
-  });
 
 	const bar = document.getElementById('nilai');
 
@@ -392,6 +382,69 @@ $data_mkpil_repeat = array(
       }]
     },
   });
+
+  document.getElementById('watchlist-btn').addEventListener('click', function() {
+		const btn = document.getElementById('watchlist-btn');
+		const notification = document.getElementById('notification');
+		const isAdded = btn.textContent === 'sudah ditambahkan';
+
+		if (isAdded) {
+			btn.textContent = 'masukan ke watchlist';
+			notification.textContent = 'berhasil dihapus dari watchList';
+			notification.classList.remove('success');
+			notification.classList.add('error');
+		} else {
+			btn.textContent = 'sudah ditambahkan';
+			notification.textContent = 'berhasil ditambahkan ke watchList';
+			notification.classList.remove('error');
+			notification.classList.add('success');
+		}
+
+		notification.style.display = 'block';
+
+		setTimeout(function() {
+			notification.style.display = 'none';
+		}, 3000);
+	});
+
+	const pie = document.getElementById('kehadiran');
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updatePieChart(chart, data) {
+        chart.data.datasets[0].data = data;
+        chart.update();
+    }
+
+    const kehadiranChart = new Chart(pie, {
+        type: 'pie',
+        data: {
+            labels: ['Hadir', 'Sakit', 'Izin', 'Tidak Hadir'],
+            datasets: [{
+                label: 'Kehadiran',
+                data: [getRandomInt(100, 400), getRandomInt(10, 30), getRandomInt(10, 30), getRandomInt(30, 50)],
+                backgroundColor: [
+                    'rgb(134,228,186)',
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 205, 86)',
+                    'rgb(54, 162, 235)'
+                ],
+                hoverOffset: 4
+            }]
+        },
+    });
+
+    const filterMatkul = document.querySelector('.filter-matkul');
+    filterMatkul.addEventListener('input', function() {
+        const value = filterMatkul.value.trim();
+        if (value) {
+            updatePieChart(kehadiranChart, [getRandomInt(1, 16), getRandomInt(1, 16), getRandomInt(1, 16), getRandomInt(1, 16)]);
+        } else {
+            updatePieChart(kehadiranChart, [getRandomInt(100, 400), getRandomInt(10, 30), getRandomInt(10, 30), getRandomInt(30, 50)]);
+        }
+    });
 	
 </script>
 

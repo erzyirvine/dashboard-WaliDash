@@ -26,6 +26,14 @@ class indexController extends Controller
         return view('profile_mhs');
     }
 
+    public function indexProfileGreen(){
+        return view('profile_mhs_green');
+    }
+
+    public function indexLogout(){
+        return view('login_page');
+    }
+
     public function login(Request $req){
 
 

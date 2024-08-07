@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <?php
 $data = array(
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Erzy Irvine Julian", "semester" => 8, "ipk" => 314, "sks" => 135, "tak" => 60),
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Kania Namaga", "semester" => 8, "ipk" => 354, "sks" => 135, "tak" => 5),
-    array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Catur Rangga Hutapea", "semester" => 8, "ipk" => 260, "sks" => 135, "tak" => 21),
+    array("nim" => "1301204022","kelas" => "IF-43-12", "name" => "Catur Rangga Hutapea", "semester" => 8, "ipk" => 260, "sks" => 135, "tak" => 21),
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Emil Widodo", "semester" => 8, "ipk" => 301, "sks" => 135, "tak" => 1),
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Ulya Hastuti", "semester" => 8, "ipk" => 300, "sks" => 135, "tak" => 0),
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Diba Habibi", "semester" => 8, "ipk" => 390, "sks" => 135, "tak" => 78),
@@ -12,25 +11,38 @@ $data = array(
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Savina Purwanti", "semester" => 8, "ipk" => 322, "sks" => 135, "tak" => 51),
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Dina Puspasari", "semester" => 8, "ipk" => 346, "sks" => 135, "tak" => 43),
     array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "Uli Aryani", "semester" => 8, "ipk" => 331, "sks" => 135, "tak" => 24),
+    array("nim" => "1301204022","kelas" => "IF-44-12", "name" => "tuti astuti", "semester" => 8, "ipk" => 331, "sks" => 135, "tak" => 24),
 );
 
 usort($data, function($a, $b) {
     return $a['ipk'] <=> $b['ipk'];
 });
-?>
 
+// Pagination Logic
+$items_per_page = 10;
+$total_items = count($data);
+$total_pages = ceil($total_items / $items_per_page);
+
+$current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($current_page < 1) $current_page = 1;
+if ($current_page > $total_pages) $current_page = $total_pages;
+
+$start_index = ($current_page - 1) * $items_per_page;
+$display_data = array_slice($data, $start_index, $items_per_page);
+?>
 
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Main Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
 
     <div class="container-fluid">
@@ -66,7 +78,7 @@ usort($data, function($a, $b) {
                             <span>ERJ</span>
                         </div>
                         <div class="col-md-2 logout">
-                            <a href="#">
+                            <a href="{{ route('login_page') }}">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </div>
@@ -87,22 +99,22 @@ usort($data, function($a, $b) {
                             </div>
                             <div class="col-md-4 mhs_filter">
                                 <div class="input-group search-bar">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="cari mahasiswa" aria-label="cari mahasiswa" aria-describedby="button-addon2">
                                     <span class="input-group-append">
                                         <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="button">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </span>
                                 </div>
-                                <select class="form-select kls_filter" aria-label="Default select example">
-                                    <option selected>All</option>
-                                    <option value="1">IF-43-12</option>
-                                    <option value="2">IF-44-12</option>
-                                    <option value="3">IF-47-04</option>
+                                <select class="form-select kls_filter" id="classFilter" aria-label="Default select example">
+                                    <option value="All" selected>Semua kelas</option>
+                                    <option value="IF-43-12">IF-43-12</option>
+                                    <option value="IF-44-12">IF-44-12</option>
+                                    <option value="IF-47-04">IF-47-04</option>
                                 </select>
                             </div>
                         </div>
-                        <table class="table">
+                        <table class="table" id="studentTable">
                           <thead>
                             <tr>
                               <th scope="col">No</th>
@@ -118,13 +130,13 @@ usort($data, function($a, $b) {
                           </thead>
                             <tbody>
                                 <?php 
-                                    $i = 1;
-                                    foreach($data as $row) : 
+                                    $i = $start_index + 1;
+                                    foreach($display_data as $row) : 
                                         $alert = "";
-                                        $res = '  <button type="button" class="btn btn-warning"><i class="fa fa-map-pin"></i></button>';
+                                        $res = '  <button type="button" class="btn btn-warning watchlist-btn"><i class="fa fa-map-pin"></i></button>';
                                         if($row["ipk"] <= 300) {
                                             $alert = '<i class="fa fa-exclamation-triangle" data-bs-toggle="tooltip" data-bs-placement="top" title="Mahasiswa Ini Perlu Dicek"></i>';
-                                        $res = '<button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>';
+                                        $res = '<button type="button" class="btn btn-danger watchlist-btn"><i class="fa fa-trash"></i></button>';
                                         }
                                 ?>
                             <tr class="<?php echo ($row["ipk"] <= 300) ? 'table-danger' : ''; ?>">
@@ -145,48 +157,116 @@ usort($data, function($a, $b) {
                             </tbody>
                         </table>
                         <div class="row">
-    <div class="col-md-3">
-        <p>Showing 10 of <?= count($data)?> data</p>
-    </div>
-    <div class="col-md-7">
-    </div>
-    <div class="col-md-2">
-    <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
-    </li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">></a>
-    </li>
-  </ul>
-</nav>
-    </div>
-</div>
-                    </div>
-                    </div>
-                </div>
+                            <div class="col-md-10">
+                                <p>Showing <?php echo min($items_per_page, $total_items - $start_index); ?> of <?php echo $total_items ?> data</p>
+                            </div>
+                            <div class="col pagination-widget">
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    <?php if($current_page > 1): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<?php echo $current_page - 1; ?>"><</a>
+                                        </li>
+                                    <?php else: ?>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php for($page = 1; $page <= $total_pages; $page++): ?>
+                                        <li class="page-item <?php echo $page == $current_page ? 'active' : ''; ?>">
+                                            <a class="page-link" href="?page=<?php echo $page; ?>"><?php echo $page; ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+
+                                    <?php if($current_page < $total_pages): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<?php echo $current_page + 1; ?>">></a>
+                                        </li>
+                                    <?php else: ?>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">></a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
                 <div class="row">
                     <div class="col footer"></div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="notification success" id="successNotification">
+        <i class="fa fa-check"></i> <span id="successMessage">Mahasiswa berhasil ditambahkan ke daftar watchlist</span>
+    </div>
+    <div class="notification error" id="errorNotification">
+        <i class="fa fa-check"></i> <span id="errorMessage">Mahasiswa berhasil dihapus dari daftar watchlist</span>
+    </div>
+    <script>
+        function filterTable() {
+            var searchInput = document.getElementById('searchInput').value.toLowerCase();
+            var classFilter = document.getElementById('classFilter').value;
+            var rows = document.querySelectorAll('#studentTable tbody tr');
+            rows.forEach(function(row) {
+                var name = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                var kelas = row.querySelector('td:nth-child(3)').textContent;
+                var nameMatch = name.includes(searchInput);
+                var classMatch = (classFilter === 'All' || kelas === classFilter);
+                if (nameMatch && classMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
 
+        document.getElementById('searchInput').addEventListener('keyup', filterTable);
+        document.getElementById('classFilter').addEventListener('change', filterTable);
+
+        document.querySelectorAll('.watchlist-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var icon = this.querySelector('i');
+            var successNotification = document.getElementById('successNotification');
+            var errorNotification = document.getElementById('errorNotification');
+            var buttonClasses = this.classList;
+
+            if (icon.classList.contains('fa-map-pin')) {
+                icon.classList.remove('fa-map-pin');
+                icon.classList.add('fa-trash');
+                buttonClasses.remove('btn-warning');
+                buttonClasses.add('btn-danger');
+                successNotification.style.display = 'flex';
+                setTimeout(function() {
+                    successNotification.style.display = 'none';
+                }, 3000);
+            } else if (icon.classList.contains('fa-trash')) {
+                icon.classList.remove('fa-trash');
+                icon.classList.add('fa-map-pin');
+                buttonClasses.remove('btn-danger');
+                buttonClasses.add('btn-warning');
+                errorNotification.style.display = 'flex';
+                setTimeout(function() {
+                    errorNotification.style.display = 'none';
+                }, 3000);
+            }
+        });
+    });
+
+        document.querySelectorAll('.btn-primary').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var row = this.closest('tr');
+            if (row.classList.contains('table-danger')) {
+                window.location.href = "{{ route('profile_mhs') }}";
+            } else {
+                window.location.href = "{{ route('profile_mhs_green') }}";
+            }
+        });
+    });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
